@@ -5,7 +5,7 @@ import dronRouter from './router/dron.router';
 import { FillMedicament } from './config/fill.madicament';
 
 // jobs
-import { jobs } from './jobs/job.drone';
+import { jobs } from './jobs/cron.drone';
 
 import env from 'dotenv'
 env.config();
@@ -25,5 +25,6 @@ app.listen( process.env.PORT || 3000 , () => {
     
     //jobs 
     jobs.start();
+    
     console.log("Server in running");
 })

@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 
 import {Request , Response} from 'express';
 import dronModels from '../models/dron.models';
@@ -27,16 +28,14 @@ export const getAllId = async (req: Request , res: Response) => {
 
 export const deleteDrone = async (req: Request , res: Response) => {
        const id = req.params['id'];
-       const findDrone =  await dronModels.findOneAndRemove(id).then().catch((error) => {
-              res.status(400).json({"Error": error });
-       });
-        if(findDrone){
-           res.status(200).json(findDrone);
-        }
-        else{
-              res.status(400).json({"mensaje" : "Not fount"});
-        }
-     
+       try {
+              const findDrone =  await dronModels.findByIdAndRemove(id);
+              if(findDrone){
+                     res.status(200).json(findDrone);
+                  }
+       } catch (error) {
+              res.status(400).json({error});
+       }
 }
 
 export const updateDrone = async (req: Request , res: Response) => {
@@ -76,6 +75,37 @@ export const getAllDroneXMedicament = async (req: Request , res: Response) => {
        ])
        
        res.status(200).json(resul);
-       
+}
+
+
+export const getDroneByIdandMedicament = async (req: Request , res: Response) => {
+       const id = req.params['id'];
+       const result = await dronModels.aggregate([
+             {
+              $lookup:{
+                     from: "medications",
+                     let: {
+                           medicament: "$medicaments"
+                         },
+                     pipeline:[
+                         {
+                             $match: {
+                                $expr:{
+                                    $in:['$name','$$medicament'],
+                                 }
+                             }
+                         }
+                     ] ,
+                     as: "medic"
+                 }
+
+              },
+              {
+                $match : {
+                     _id : mongoose.Types.ObjectId(id)
+                }
+              }
+       ])
+       res.status(200).json(result);
 }
 
