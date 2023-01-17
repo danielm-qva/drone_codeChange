@@ -4,7 +4,7 @@ import {Request , Response} from 'express';
 import dronModels from '../models/dron.models';
 
 export const getALL = async (req: Request , res: Response) => {
-       const listDrone =  await dronModels.find();
+       const listDrone =  await dronModels.find(req.query);
        res.status(200).json({listDrone});
 }
 export const addDron = async (req: Request , res: Response) => {

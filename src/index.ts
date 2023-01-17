@@ -1,30 +1,23 @@
-import express from 'express';
-import { connectDb } from './config/mongoose_connect';
-import dronRouter from './router/dron.router';
 
+import app from './config/server.config';
 import { FillMedicament } from './config/fill.madicament';
 
 // jobs
 import { jobs } from './jobs/cron.drone';
+import { job_check_baterry } from './jobs/cron.drone_check_baterry';
 
-import env from 'dotenv'
-env.config();
-
-const app = express();
-app.use(express.json())
-
-//Router
-app.use('/dron' , dronRouter);
-
-app.listen( process.env.PORT || 3000 , () => {
-    //connect db
-    connectDb();
+import 'dotenv/config';
     
+const port = process.env.PORT || 4000 ;
+
+app.listen(4000 , () => {
     // fill medicament
-    FillMedicament();
-    
+    FillMedicament();    
     //jobs 
     jobs.start();
-    
-    console.log("Server in running");
+    // Jobs check baterry 
+    job_check_baterry.start();
+
+    console.log(`Server in running in port ${port}`);
 })
+

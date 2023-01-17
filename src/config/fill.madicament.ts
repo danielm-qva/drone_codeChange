@@ -26,7 +26,7 @@ const data: medicamentInterface[] = [
 
 export const FillMedicament = async () => {
     const count = await medicationModels.find();
-     if(count.length < 0){
+     if(count.length === 0){
          medicationModels.insertMany(data);
      }
 } 
