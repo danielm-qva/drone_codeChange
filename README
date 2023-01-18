@@ -33,6 +33,11 @@ In order for the server to work, we must first enter the following command:
    1 - The first scheduled job runs every day at 12:00 am query creates a folder with a .json file with data.
    2 - The second job is to be running every 30 minutes to verify if the drones are low on charge (below 25%) to make an update and put it in LOADING state.
 
+ note :
+The server is created with environments, that is to say, for the test with the test environment and with its database different from those of dev or production.
+This configuration can be seen in the package.json and the config/mongoose_connect.ts .
+   
+
 
 
    

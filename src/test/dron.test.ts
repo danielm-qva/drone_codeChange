@@ -14,22 +14,14 @@ describe('Test Dron Endpoint', () => {
         expect(repo.body.listDrone).toBeInstanceOf(Array);
     });
 
-    // test('Test Post Dron', async () => {
-    //     const repo = await supertest(app).post("/dron").send({
-    //         "model": "Middleweight",
-    //         "weight": 265,
-    //         "baterry": 64,
-    //         "state": "LOADING",
-    //         "medicaments": ["medicam_1", "medicam_2"]
-    //     });
-    //     expect(repo.statusCode).toBe(200)
-    // });
-
-    // test('Test get all Dron for ID', async () => {
-    //     const listDron = await supertest(app).get("/dron").send();
-    //     console.log(listDron);
-    //     const repo = await supertest(app).get(`/dron/${listDron.body[0].id}`).send();
-    //     expect(repo.statusCode).toBe(200)
-    // });
-
+    test('Test Post Dron', async () => {
+        const repo = await supertest(app).post("/dron").send({
+            "model": "Middleweight",
+            "weight": 265,
+            "baterry": 64,
+            "state": "LOADING",
+            "medicaments": ["medicam_1", "medicam_2"]
+        });
+        expect(repo.statusCode).toBe(200)
+    });
 });

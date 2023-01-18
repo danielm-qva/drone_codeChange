@@ -118,6 +118,27 @@
 				"description": "\r\nList the drones with their medication list"
 			},
 			"response": []
+		},
+		{
+			"name": "The dron  whith medicament",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/dron/63c8222f494f391aecf74161/medic",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"dron",
+						"63c8222f494f391aecf74161",
+						"medic"
+					]
+				},
+				"description": "A drone was searched by id and returns the drone with the list of medications"
+			},
+			"response": []
 		}
 	]
 }
