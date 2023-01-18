@@ -1,0 +1,38 @@
+Hello..
+Requirements for the server:
+1 - Install node js (^ 18.0.0) and npm
+2 - Install mongodb ^5.0.14
+
+In order for the server to work, we must first enter the following command:
+ 1- npm install 
+ after this step you can see the available commands with:
+   -- npm run 
+   
+   server in runnig mode develoment
+     "dev": "cross-env NODE_ENV=development ts-node-dev src/index.ts", 
+ 
+     Command to remove build folder
+    "clean": "rm -rf build",
+
+    This is the command for building the server, it generates a build folder with all the necessary files to be able to deploy the server for production
+    "build": "tsc",
+
+    Command for the execution of the server ready for production
+    "start": "cross-env NODE_ENV=production node build/index.js",
+
+    
+    Test command
+    "test": "cross-env NODE_ENV=test jest",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
+
+    
+    I will create a folder with a postman collection with all the available endpoints.
+
+   There are two scheduled jobs:
+   1 - The first scheduled job runs every day at 12:00 am query creates a folder with a .json file with data.
+   2 - The second job is to be running every 30 minutes to verify if the drones are low on charge (below 25%) to make an update and put it in LOADING state.
+
+
+
+   

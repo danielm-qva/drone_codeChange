@@ -14,7 +14,7 @@ shell.cd(__dirname + '/log');
        const logDate: LogDronInterface[] = [];
 
         const drones = await dronModels.find();
-         drones.forEach((item: any , index) => {
+         drones.forEach((item: any) => {
               logDate.push({
                   id: item._id,
                   model: item.model,

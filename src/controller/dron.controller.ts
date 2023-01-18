@@ -50,7 +50,6 @@ export const updateDrone = async (req: Request , res: Response) => {
      
 }
 
-
 export const getAllDroneXMedicament = async (req: Request , res: Response) => {
        const resul = await dronModels.aggregate([
           {
@@ -76,7 +75,6 @@ export const getAllDroneXMedicament = async (req: Request , res: Response) => {
        
        res.status(200).json(resul);
 }
-
 
 export const getDroneByIdandMedicament = async (req: Request , res: Response) => {
        const id = req.params['id'];

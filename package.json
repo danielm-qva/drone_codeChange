@@ -9,8 +9,8 @@
     "build": "tsc",
     "start": "cross-env NODE_ENV=production node build/index.js",
     "test": "cross-env NODE_ENV=test jest",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watchAll"
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
   "keywords": [],
   "author": "",
