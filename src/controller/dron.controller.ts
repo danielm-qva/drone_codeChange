@@ -18,20 +18,20 @@ export const addDron = async (req: Request , res: Response) => {
 
 export const getAllId = async (req: Request , res: Response) => {
        const id = req.params['id'];
-       const listDrone = await dronModels.findById(id).then().catch((error)=> {
+       const findDrone = await dronModels.findById(id).then().catch((error)=> {
               res.status(400).json({"Error" : error});
        });
-       if(listDrone){
-              res.status(200).json({listDrone});
+       if(findDrone){
+              res.status(200).json({findDrone});
        }
 }
 
 export const deleteDrone = async (req: Request , res: Response) => {
        const id = req.params['id'];
        try {
-              const findDrone =  await dronModels.findByIdAndRemove(id);
-              if(findDrone){
-                     res.status(200).json(findDrone);
+              const delteDrone =  await dronModels.findByIdAndRemove(id);
+              if(delteDrone){
+                     res.status(200).json(delteDrone);
                   }
        } catch (error) {
               res.status(400).json({error});
@@ -40,9 +40,9 @@ export const deleteDrone = async (req: Request , res: Response) => {
 
 export const updateDrone = async (req: Request , res: Response) => {
        const id = req.params['id'];
-       const listDrone =  await dronModels.findByIdAndUpdate(id , req.body , {new : true , upsert: true});
-        if(listDrone){
-               res.status(200).json({listDrone});
+       const droneupdate =  await dronModels.findByIdAndUpdate(id , req.body , {new : true , upsert: true});
+        if(droneupdate){
+               res.status(200).json({droneupdate});
         }
         else{
               res.status(400).json({"mensaje" : "Not fount"});

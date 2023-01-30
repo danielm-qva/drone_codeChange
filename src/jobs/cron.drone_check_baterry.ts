@@ -1,4 +1,3 @@
-import { json } from 'express';
 import cron from 'node-cron' 
 import dronModels from '../models/dron.models';
 
